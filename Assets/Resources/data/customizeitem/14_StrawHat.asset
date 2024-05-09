@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65bf483b6b7de711829e639a4b9d308, type: 3}
+  m_Name: 14_StrawHat
+  m_EditorClassIdentifier:
+  ID: StrawHat
+  Name: StrawHat
+  Avatar: {fileID: 21300000, guid: 7409584fa20a17b4db915084b294aa19, type: 2}
+  Cost: 0
+  Model: {fileID: 1592952610934879, guid: 7026aed096828fc4cb5d4f8fae0e4c85, type: 2}
+  UnlockType: 1

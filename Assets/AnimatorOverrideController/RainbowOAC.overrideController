@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RainbowOAC
+  m_Controller: {fileID: 9100000, guid: 116aa1d88bb94cc44b53ca73a6891614, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e4f911b24f084ac4f8db2b6d95f6f8bc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: daf49f51e777fc3439070d838ea88833, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f34d408f5137255458da56eba03fdc19, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 777883c2355efd44f830005eecb8afb8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 668950f358f482640b3d9fb170625341, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e16a3953c1d57dc418b9181450b3142a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3b17d600cfbbccd4cac55f22b30f1ff6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 24ea59070b27aac4bb1fa5ade7b97636, type: 2}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7aae800a6d9b79f0273e1ca92db6570, type: 3}
+  m_Name: 13_Cacao
+  m_EditorClassIdentifier:
+  ID: 13
+  Price: 1
+  Avatar: {fileID: 21300000, guid: 81ef8fecbc845784db7e677c8bbf20e2, type: 2}
+  Prefab: {fileID: 114265412622049866, guid: aede7097d69d7a24ca25dc634e06c703, type: 2}
