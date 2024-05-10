@@ -12,6 +12,8 @@ TagManager:
   - MachineGroup
   - AnimalGroup
   - SlotCustomer
+  - Money
+  - BuyZone
   layers:
   - Default
   - TransparentFX
