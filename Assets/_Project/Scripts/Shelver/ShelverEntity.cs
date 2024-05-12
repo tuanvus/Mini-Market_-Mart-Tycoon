@@ -2,17 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelverEntity : MonoBehaviour
+public class ShelverEntity : ItemBuilding
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<Transform> slotCustomer;
+    [SerializeField] StorageHandle storageHandle;
+
+    [SerializeField] private bool foodCounter;
+    public bool IsFull
     {
-        
+        get
+        {
+            return storageHandle.IsFull;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool FoodCounter => foodCounter;
+
+
+    int _slotCustomerCount = 0;
+
+    void Start()
     {
-        
+    }
+
+    public void AddProduct(Transform product)
+    {
+        storageHandle.AddProduct(product);
+    }
+
+    public Transform GetPositionSlotCustomer()
+    {
+        return slotCustomer[_slotCustomerCount];
+    }
+
+    public void AddCustomer(CustomerEntity customer)
+    {
+        // customer.SetParent(slotCustomer[_slotCustomerCount]);
+        // customer.localPosition = Vector3.zero;
+        _slotCustomerCount++;
     }
 }

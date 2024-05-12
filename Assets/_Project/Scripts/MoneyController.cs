@@ -8,7 +8,7 @@ public class MoneyController : MonoBehaviour
 {
     [SerializeField] GameObject moneyPrefab;
 
-    bool _isFillMoney = false;
+    [SerializeField] bool isFillMoney = false;
     void Start()
     {
     }
@@ -25,9 +25,9 @@ public class MoneyController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(Tags.T_BuyZone) && !_isFillMoney )
+        if (other.CompareTag(Tags.T_BuyZone) && !isFillMoney )
         {
-            _isFillMoney = true;
+            isFillMoney = true;
             BuyZone buyZone = other.GetComponent<BuyZone>();
             if (buyZone.CanBuy)
             {
@@ -35,33 +35,42 @@ public class MoneyController : MonoBehaviour
 
                StartCoroutine(FillMoneyCoroutine(buyZone));
             }
+        
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(Tags.T_BuyZone) && _isFillMoney)
+        if (other.CompareTag(Tags.T_BuyZone) && isFillMoney)
         {
             Debug.Log("Exit");
-            _isFillMoney = false;
+            isFillMoney = false;
             StopCoroutine(FillMoneyCoroutine(null));
         }
     }
 
     IEnumerator FillMoneyCoroutine(BuyZone buyZone)
     {
-        Debug.Log("FillMoneyCoroutine");
-        while (buyZone.CanBuy && _isFillMoney && MoneyManager.Instance.MoneyValue > 0)
+        //Debug.Log("FillMoneyCoroutine");
+        while (buyZone.CanBuy && isFillMoney && MoneyManager.Instance.MoneyValue > 0)
         {
             var moneyFill = Instantiate(moneyPrefab);
             moneyFill.transform.position = transform.position;
-            moneyFill.transform.DOMove(buyZone.MoneyInput.position, 1f).OnComplete(() =>
+            moneyFill.transform.DOMove(buyZone.MoneyInput.position, 0.4f).OnComplete(() =>
             {
-                buyZone.AddMoney(1);
-                MoneyManager.Instance.ChangeMoneyValue(-1);
+                if (MoneyManager.Instance.SpendMoney(-1))
+                {
+                    buyZone.AddMoney(1);
+                }
                 Destroy(moneyFill);
+                if (!buyZone.CanBuy)
+                {
+                    isFillMoney = false;
+
+                }
             });
-            yield return new WaitForSeconds(0.5f);
+          
+            yield return new WaitForSeconds(0.2f);
 
         }
  

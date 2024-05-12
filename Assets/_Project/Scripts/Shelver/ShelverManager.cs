@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelverManager : MonoBehaviour
+public class ShelverManager : Singleton<ShelverManager>
 {
-    // Start is called before the first frame update
+    [SerializeField] private List<ShelverEntity> shelverList;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+   public ShelverEntity GetShelverFood()
     {
-        
+        foreach (var shelver in shelverList)
+        {
+            if (!shelver.IsFull && shelver.IsUnlocked && shelver.FoodCounter)
+            {
+                return shelver;
+            }
+        }
+
+        return null;
     }
 }

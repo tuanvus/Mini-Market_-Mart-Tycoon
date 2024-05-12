@@ -26,6 +26,13 @@ public class MoneyManager : Singleton<MoneyManager>
     
     public bool SpendMoney(int value)
     {
+        if (moneyValue - value < 0)
+        {
+            moneyValue = 0;
+            OnMoneyValueChanged?.Invoke(moneyValue);
+            return false;
+
+        }
         if (moneyValue >= value)
         {
             moneyValue -= value;

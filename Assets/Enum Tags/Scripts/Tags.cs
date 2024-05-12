@@ -17,4 +17,5 @@ public const string T_AnimalGroup = @"AnimalGroup";
 public const string T_SlotCustomer = @"SlotCustomer";
 public const string T_Money = @"Money";
 public const string T_BuyZone = @"BuyZone";
+public const string T_Plant = @"Plant";
 }

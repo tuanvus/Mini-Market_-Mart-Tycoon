@@ -14,11 +14,12 @@ TagManager:
   - SlotCustomer
   - Money
   - BuyZone
+  - Plant
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Customer
   - Water
   - UI
   - Thief
