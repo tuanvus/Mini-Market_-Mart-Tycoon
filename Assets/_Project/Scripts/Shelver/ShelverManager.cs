@@ -5,15 +5,14 @@ using UnityEngine;
 public class ShelverManager : Singleton<ShelverManager>
 {
     [SerializeField] private List<ShelverEntity> shelverList;
-    
+
     void Start()
     {
-        
     }
 
-   public ShelverEntity GetShelverFood()
+    public ShelverEntity GetShelverFood()
     {
-        Debug.Log("GetShelverFood = "+ shelverList.Count);
+        Debug.Log("GetShelverFood = " + shelverList.Count);
         foreach (var shelver in shelverList)
         {
             if (!shelver.IsFull && shelver.IsUnlocked && shelver.FoodCounter)
@@ -24,4 +23,18 @@ public class ShelverManager : Singleton<ShelverManager>
 
         return null;
     }
+    public ShelverEntity GetShelverPayment()
+    {
+        Debug.Log("GetShelverPay = " + shelverList.Count);
+        foreach (var shelver in shelverList)
+        {
+            if ( shelver.IsUnlocked && !shelver.FoodCounter)
+            {
+                return shelver;
+            }
+        }
+
+        return null;
+    }
+    
 }

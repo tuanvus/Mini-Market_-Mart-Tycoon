@@ -7,6 +7,7 @@ public class ShelverEntity : ItemBuilding
     [SerializeField] List<Transform> slotCustomer;
     [SerializeField] StorageHandle storageHandle;
 
+    [SerializeField] PaymentHandle paymentHandle;
     [SerializeField] private bool foodCounter;
     public bool IsFull
     {
@@ -24,6 +25,11 @@ public class ShelverEntity : ItemBuilding
     void Start()
     {
     }
+    public void AddRequestPayment(CustomerEntity customerEntity)
+    {
+        paymentHandle.AddRequestPayment(customerEntity);
+    }
+  
 
     public void AddProduct(Transform product)
     {

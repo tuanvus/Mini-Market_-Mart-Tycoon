@@ -16,12 +16,12 @@ public class AnimatorHandle : MonoBehaviour
 
    public void Playanimation(string animationName)
     {
-        Debug.Log("Playing animation: " + animationName);
+       // Debug.Log("Playing animation: " + animationName);
         _animator.CrossFade(animationName, 0.1f,1,0);
     }
    public void Playanimation(string animationName,float value)
     {
-        Debug.Log("Playing animation: " + animationName);
+       // Debug.Log("Playing animation: " + animationName);
         _animator.SetFloat(animationName,value);
     }
 }

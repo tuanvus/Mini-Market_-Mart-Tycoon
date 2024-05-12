@@ -27,8 +27,12 @@ public class CustomerManager : Singleton<CustomerManager>
             yield return new WaitForSeconds(timeSpawn);
 
             ShelverEntity shelver = ShelverManager.Instance.GetShelverFood();
+            ShelverEntity payment = ShelverManager.Instance.GetShelverPayment();
+
             var customer = Instantiate(customerPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity).GetComponent<CustomerEntity>();
-            customer.MoveToShelverTarget(shelver.GetPositionSlotCustomer(),shelver.transform);
+            customer.MoveToTarget(shelver.GetPositionSlotCustomer(),shelver.transform);
+            customer.SetPosExit(spawnPoints[0], spawnPoints[0]);
+            customer.SetPosPayment(payment.GetPositionSlotCustomer(),payment.transform);
             shelver.AddCustomer(customer);
             customerEntities.Add(customer);
             currentCustomer++;

@@ -11,7 +11,7 @@ public class CollectResourceControler : MonoBehaviour
     [SerializeField] private Transform resourceInput;
     [SerializeField] List<GameObject> resourceList;
     [SerializeField] bool isCollect = false;
-
+    [SerializeField] private GameObject txtMax;
     void Start()
     {
     }
@@ -49,6 +49,8 @@ public class CollectResourceControler : MonoBehaviour
                     {
                         storageHandle.AddProduct(resource.transform);
                     }
+                    storageHandle.FillFinish();
+                    txtMax.SetActive(false);
                     resourceList.Clear();
                     currentResource = 0;
                 }
@@ -57,6 +59,8 @@ public class CollectResourceControler : MonoBehaviour
             
         }
     }
+    
+
 
     IEnumerator CollectResourceCoroutine(PlantBase plantBase)
     {
@@ -78,6 +82,7 @@ public class CollectResourceControler : MonoBehaviour
 
             if (currentResource >= maxResource)
             {
+                txtMax.SetActive(true);
                 isCollect = false;
             }
         }

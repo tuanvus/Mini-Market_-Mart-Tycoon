@@ -56,7 +56,7 @@ public class MoneyController : MonoBehaviour
         {
             var moneyFill = Instantiate(moneyPrefab);
             moneyFill.transform.position = transform.position;
-            moneyFill.transform.DOMove(buyZone.MoneyInput.position, 0.4f).OnComplete(() =>
+            moneyFill.transform.DOMove(buyZone.MoneyInput.position, 0.4f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 if (MoneyManager.Instance.SpendMoney(1))
                 {
@@ -70,7 +70,7 @@ public class MoneyController : MonoBehaviour
                 }
             });
           
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
 
         }
  
