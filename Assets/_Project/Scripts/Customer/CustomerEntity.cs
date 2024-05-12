@@ -8,31 +8,31 @@ public class CustomerEntity : MonoBehaviour
 {
     [SerializeField] AnimatorHandle animatorHandle;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField,AnimatorParam] private string walkAnimation;
+    [SerializeField, AnimatorParam] private string walkAnimation;
     bool isMove = false;
+
     void Start()
     {
-        
     }
 
- 
 
-    public void MoveToShelverTarget(Transform target)
+    public void MoveToShelverTarget(Transform target, Transform parentShelver)
     {
         agent.SetDestination(target.position);
         isMove = true;
-        animatorHandle.Playanimation(walkAnimation,1);
-        StartCoroutine(WaitForDestinationReached());
+        animatorHandle.Playanimation(walkAnimation, 1);
+        StartCoroutine(WaitForDestinationReached(parentShelver));
     }
-    
-    IEnumerator WaitForDestinationReached()
+
+    IEnumerator WaitForDestinationReached(Transform parentShelver)
     {
         while (isMove)
         {
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
                 // Agent đã đến đích
-                animatorHandle.Playanimation(walkAnimation,0);
+                transform.LookAt(parentShelver);
+                animatorHandle.Playanimation(walkAnimation, 0);
                 yield break;
             }
 

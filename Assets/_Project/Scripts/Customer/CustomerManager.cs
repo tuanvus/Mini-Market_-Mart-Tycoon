@@ -28,7 +28,7 @@ public class CustomerManager : Singleton<CustomerManager>
 
             ShelverEntity shelver = ShelverManager.Instance.GetShelverFood();
             var customer = Instantiate(customerPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity).GetComponent<CustomerEntity>();
-            customer.MoveToShelverTarget(shelver.GetPositionSlotCustomer());
+            customer.MoveToShelverTarget(shelver.GetPositionSlotCustomer(),shelver.transform);
             shelver.AddCustomer(customer);
             customerEntities.Add(customer);
             currentCustomer++;

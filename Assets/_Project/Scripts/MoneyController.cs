@@ -58,7 +58,7 @@ public class MoneyController : MonoBehaviour
             moneyFill.transform.position = transform.position;
             moneyFill.transform.DOMove(buyZone.MoneyInput.position, 0.4f).OnComplete(() =>
             {
-                if (MoneyManager.Instance.SpendMoney(-1))
+                if (MoneyManager.Instance.SpendMoney(1))
                 {
                     buyZone.AddMoney(1);
                 }

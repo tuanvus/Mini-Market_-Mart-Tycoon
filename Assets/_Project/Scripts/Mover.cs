@@ -19,7 +19,7 @@ public class Mover : MonoBehaviour
     
     private void Start()
     {
-        agent.speed = speed;
+       // agent.speed = speed;
     }
 
     void Update()
@@ -39,14 +39,16 @@ public class Mover : MonoBehaviour
 
             // Set the destination for NavMeshAgent
             Vector3 destination = transform.position + moveDirection;
+            transform.LookAt(destination);
+            transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
 
-            // Check if the destination is on NavMesh
-            UnityEngine.AI.NavMeshHit hit;
-            if (UnityEngine.AI.NavMesh.SamplePosition(destination, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
-            {
-                // Set the destination for NavMeshAgent
-                agent.SetDestination(hit.position);
-            }
+            // // Check if the destination is on NavMesh
+            // UnityEngine.AI.NavMeshHit hit;
+            // if (UnityEngine.AI.NavMesh.SamplePosition(destination, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas))
+            // {
+            //     // Set the destination for NavMeshAgent
+            //     agent.SetDestination(hit.position);
+            // }
         }
         else
         {

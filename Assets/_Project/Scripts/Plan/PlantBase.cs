@@ -15,6 +15,7 @@ public class PlantBase : MonoBehaviour
 
     public bool IsCollect => isCollect;
     public int CurrentObj => currentObj;
+    bool isSpawn = false;
     void Start()
     {
     }
@@ -23,6 +24,7 @@ public class PlantBase : MonoBehaviour
     {
         isCollect = false;
         objList = new List<GameObject>();
+        isSpawn = true;
         StartCoroutine(SpawnObj());
     }
 
@@ -30,24 +32,35 @@ public class PlantBase : MonoBehaviour
 
     IEnumerator SpawnObj()
     {
-        yield return new WaitForSeconds(0.6f);
-        while (currentObj < maxObjl )
+        while (true)
         {
-            yield return new WaitForSeconds(1);
-           // Debug.Log("Spawn ");
-            isCollect = true;
+            yield return new WaitForSeconds(0.2f);
 
-            var obj = Instantiate(objViewPrefab, slots[currentObj].position, Quaternion.identity, slots[currentObj]);
-            obj.transform.localPosition = Vector3.zero;
-            objList.Add(obj);
-            currentObj++;
-
-            if (currentObj >= maxObjl)
+            if (currentObj < maxObjl && isSpawn)
             {
-               // Debug.Log("Stop Spawn");
-                yield return null;
+                yield return new WaitForSeconds(1f);
+                // Debug.Log("Spawn ");
+                isCollect = true;
+
+                var obj =  PoolManager.Pools[PoolName.resource].Spawn(objViewPrefab, slots[currentObj].position, Quaternion.identity, slots[currentObj]);
+                obj.transform.localPosition = Vector3.zero;
+                objList.Add(obj.gameObject);
+                currentObj++;
+
+                if (currentObj >= maxObjl)
+                {
+                    // Debug.Log("Stop Spawn");
+                    yield return null;
+                }
+            }
+
+            if (!isSpawn)
+            {
+                yield return new WaitForSeconds(0.5f);
+                isSpawn = true;
             }
         }
+      
     }
 
     public GameObject CollectResource()
@@ -58,6 +71,7 @@ public class PlantBase : MonoBehaviour
 
         currentObj--;
         
+        isSpawn = false;
         return objViewPrefab;
     }
 }
