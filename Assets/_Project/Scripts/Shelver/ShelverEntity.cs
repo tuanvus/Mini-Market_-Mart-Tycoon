@@ -46,5 +46,9 @@ public class ShelverEntity : ItemBuilding
         // customer.SetParent(slotCustomer[_slotCustomerCount]);
         // customer.localPosition = Vector3.zero;
         _slotCustomerCount++;
+        if (_slotCustomerCount >= slotCustomer.Count)
+        {
+            _slotCustomerCount = 0;
+        }
     }
 }
